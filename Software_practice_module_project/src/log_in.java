@@ -49,10 +49,11 @@ public class log_in {
 				}
 			}
 			System.out.println("wrong");
+			statement.close();
+			dbConnection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return false;
 	}
-
 }
