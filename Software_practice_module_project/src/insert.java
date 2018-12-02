@@ -18,23 +18,25 @@ public class insert {
 		try {
 			Connection dbConnection = dbconnect();
 			
-			String query = "insert into company(id, cosa1, cosa2)	values('1',?,?)";
-			PreparedStatement statement = dbConnection.prepareStatement(query);
-			
-			statement.setString(1,cosa1Input);
-			statement.setString(2,cosa2Input);
-			statement.executeUpdate();
-			query = "SELECT id, cosa1, cosa2 \r\n"
+			String query = "SELECT id, cosa1, cosa2 \r\n"
 					+ "FROM company";
-			System.out.println(query);
-			statement = dbConnection.prepareStatement(query);
+			PreparedStatement statement = dbConnection.prepareStatement(query);
 			ResultSet resultSet = statement.executeQuery();
+			int count = 1;
 			while (resultSet.next()) {
 				int c1 = resultSet.getInt("id");
 				String c2 = resultSet.getString("cosa1");
 				String c3 = resultSet.getString("cosa2");
 				System.out.println(c1+","+c2+","+c3);
+				count++;
 			}
+			query = "insert into company(id, cosa1, cosa2)	values(?,?,?)";
+			statement = dbConnection.prepareStatement(query);
+			int id = count;
+			statement.setInt(1,id);
+			statement.setString(2,cosa1Input);
+			statement.setString(3,cosa2Input);
+			statement.executeUpdate();
 			
 			statement.close();
 			dbConnection.close();
@@ -42,8 +44,7 @@ public class insert {
 		} catch (SQLException e) {
 			e.printStackTrace();
 	}
-	}
-
+}
 	public static Connection dbconnect() throws SQLException {
 		Connection dbConnection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?allowMultiQueries=true", "postgres",
 				"1234");
