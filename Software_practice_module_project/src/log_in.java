@@ -38,18 +38,17 @@ public class log_in {
 			while (resultSet.next()) {
 				String user_name = resultSet.getString("user_name");
 				String password = resultSet.getString("password");
-				System.out.println(user_name + "," + password);
 				strings.add(user_name);
 				strings.add(password);
 				array.add(strings);
 				if (passwordInput.equals(password) && (usernameInput.equals(user_name))) {
+					System.out.println(user_name + "," + password);
 					System.out.println("NICE");
 					status_log = true;
 					return status_log;
-				} else {
-					System.out.println("wrong");
 				}
 			}
+			System.out.println("wrong");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
