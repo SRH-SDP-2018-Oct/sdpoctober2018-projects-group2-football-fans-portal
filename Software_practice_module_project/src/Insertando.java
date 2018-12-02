@@ -91,5 +91,4 @@ public class Insertando {
 				.getConnection("jdbc:postgresql://localhost:5432/company?allowMultiQueries=true", "postgres", "");
 		return dbConnection;
 	}
-
 }
