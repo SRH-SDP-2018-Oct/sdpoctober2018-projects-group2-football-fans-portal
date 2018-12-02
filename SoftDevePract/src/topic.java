@@ -9,41 +9,6 @@ public class topic {
       try {
          Class.forName("org.postgresql.Driver");
          c = DriverManager
-<<<<<<< HEAD
-            .getConnection("jdbc:postgresql://localhost:5432/company",
-            "postgres", " ");
-         c.setAutoCommit(false);
-         System.out.println("Opened database successfully");
-        
-
-         stmt = c.createStatement();
-         String sql = "INSERT INTO company (id,name,age,address,salary) "
-               + "VALUES (1, 'Paul', 32, 'California', 20000.00 );";
-         stmt.executeUpdate(sql);
-
-         sql = "INSERT INTO company (id,name,age,address,salary) "
-               + "VALUES (2, 'Allen', 25, 'Texas', 15000.00 );";
-         stmt.executeUpdate(sql);
-
-         sql = "INSERT INTO company (id,name,age,address,salary) "
-               + "VALUES (3, 'Teddy', 23, 'Norway', 20000.00 );";
-         stmt.executeUpdate(sql);
-
-         sql = "INSERT INTO company (id,name,age,address,salary) "
-               + "VALUES (4, 'Mark', 25, 'Rich-Mond ', 65000.00 );";
-         stmt.executeUpdate(sql);
-
-         stmt.close();
-         c.commit();
-         c.close();
-      } catch (Exception e) {
-         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-         System.exit(0);
-      }
-      System.out.println("Records created successfully");
-   }
-}
-=======
             .getConnection("jdbc:postgresql://localhost:5433/company",
             "postgres", "qwerty");
          c.setAutoCommit(false);
@@ -76,4 +41,3 @@ public class topic {
       System.out.println("Records created successfully");
    }
 }
->>>>>>> branch 'master' of https://github.com/SRH-SDP-2018-Oct/sdpoctober2018-projects-group2-football-fans-portal.git
