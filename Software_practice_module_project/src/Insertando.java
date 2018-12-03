@@ -44,7 +44,7 @@ public class Insertando {
 		try {
 			Connection dbConnection = dbconnect();
 
-			String query = "SELECT id,name,lastname,user_name,email,birthday,country,city,favorite_football_team,cell_phone_number\r\n"
+			String query = "SELECT id,name,lastname,user_name,email,birthday,country,city,favorite_football_team,cell_phone_number,pasword\r\n"
 					+ "FROM user_register";
 			PreparedStatement statement = dbConnection.prepareStatement(query);
 			ResultSet resultSet = statement.executeQuery();
@@ -61,10 +61,11 @@ public class Insertando {
 				String user_detail_8 = resultSet.getString("favorite_football_team");
 				String user_detail_9 = resultSet.getString("cell_phone_number");
 				String user_detail_10 = resultSet.getString("pasword");
-				System.out.println(user_detail_0 + "," + user_detail_1+ "," + user_detail_2 + "," + user_detail_3 + "," + user_detail_4 + ","
+				System.out.println("Enhorabuena");
+				/*System.out.println(user_detail_0 + "," + user_detail_1+ "," + user_detail_2 + "," + user_detail_3 + "," + user_detail_4 + ","
 						+ user_detail_5 + "," + user_detail_6 + "," + user_detail_7 + "," + user_detail_8 + ","
 						+ user_detail_9 + ","
-						+ user_detail_10);
+						+ user_detail_10);*/
 				count++;
 			}
 			query = "insert into user_register (id,name,lastname,user_name,email,birthday,country,city,"
@@ -82,6 +83,10 @@ public class Insertando {
 			statement.setString(9, user_detail_8Input);
 			statement.setString(10, user_detail_9Input);
 			statement.setString(11, user_detail_10Input);
+			/*System.out.println(id + "," + user_detail_1Input+ "," + user_detail_2Input + "," + user_detail_3Input + "," + user_detail_4Input + ","
+					+ user_detail_5Input + "," + user_detail_6Input + "," + user_detail_7Input + "," + user_detail_8Input + ","
+					+ user_detail_9Input + ","
+					+ user_detail_10Input);*/
 			statement.executeUpdate();
 
 			statement.close();
