@@ -19,6 +19,7 @@ public class Insertando {
 		String user_detail_7Input;
 		String user_detail_8Input;
 		String user_detail_9Input;
+		String user_detail_10Input;
 		
 		System.out.println("Please type your name");
 		user_detail_1Input = scanner.nextLine();
@@ -38,6 +39,8 @@ public class Insertando {
 		user_detail_8Input = scanner.nextLine();
 		System.out.println("Please type your cellphone number");
 		user_detail_9Input = scanner.nextLine();
+		System.out.println("Please type your pasword");
+		user_detail_10Input = scanner.nextLine();
 		try {
 			Connection dbConnection = dbconnect();
 
@@ -57,13 +60,15 @@ public class Insertando {
 				String user_detail_7 = resultSet.getString("city");
 				String user_detail_8 = resultSet.getString("favorite_football_team");
 				String user_detail_9 = resultSet.getString("cell_phone_number");
+				String user_detail_10 = resultSet.getString("pasword");
 				System.out.println(user_detail_0 + "," + user_detail_1+ "," + user_detail_2 + "," + user_detail_3 + "," + user_detail_4 + ","
 						+ user_detail_5 + "," + user_detail_6 + "," + user_detail_7 + "," + user_detail_8 + ","
-						+ user_detail_9);
+						+ user_detail_9 + ","
+						+ user_detail_10);
 				count++;
 			}
 			query = "insert into user_register (id,name,lastname,user_name,email,birthday,country,city,"
-					+ "favorite_football_team,cell_phone_number)" + "values(?,?,?,?,?,?,?,?,?,?)";
+					+ "favorite_football_team,cell_phone_number,pasword)" + "values(?,?,?,?,?,?,?,?,?,?,?)";
 			statement = dbConnection.prepareStatement(query);
 			int id = count;
 			statement.setInt(1, id);
@@ -76,6 +81,7 @@ public class Insertando {
 			statement.setString(8, user_detail_7Input);
 			statement.setString(9, user_detail_8Input);
 			statement.setString(10, user_detail_9Input);
+			statement.setString(11, user_detail_10Input);
 			statement.executeUpdate();
 
 			statement.close();
