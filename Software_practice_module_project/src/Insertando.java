@@ -24,7 +24,7 @@ public class Insertando {
 		user_detail_1Input = scanner.nextLine();
 		System.out.println("Please type your lastname");
 		user_detail_2Input = scanner.nextLine();
-		System.out.println("Please type your nickname");
+		System.out.println("Please type your user_name");
 		user_detail_3Input = scanner.nextLine();
 		System.out.println("Please type your email");
 		user_detail_4Input = scanner.nextLine();
@@ -41,7 +41,7 @@ public class Insertando {
 		try {
 			Connection dbConnection = dbconnect();
 
-			String query = "SELECT id,name,lastname,nickname,email,birthday,country,city,favorite_football_team,cell_phone_number\r\n"
+			String query = "SELECT id,name,lastname,user_name,email,birthday,country,city,favorite_football_team,cell_phone_number\r\n"
 					+ "FROM user_register";
 			PreparedStatement statement = dbConnection.prepareStatement(query);
 			ResultSet resultSet = statement.executeQuery();
@@ -50,7 +50,7 @@ public class Insertando {
 				int user_detail_0 = resultSet.getInt("id");
 				String user_detail_1 = resultSet.getString("name");
 				String user_detail_2 = resultSet.getString("lastname");
-				String user_detail_3 = resultSet.getString("nickname");
+				String user_detail_3 = resultSet.getString("user_name");
 				String user_detail_4 = resultSet.getString("email");
 				String user_detail_5 = resultSet.getString("birthday");
 				String user_detail_6 = resultSet.getString("country");
@@ -62,7 +62,7 @@ public class Insertando {
 						+ user_detail_9);
 				count++;
 			}
-			query = "insert into user_register (id,name,lastname,nickname,email,birthday,country,city,"
+			query = "insert into user_register (id,name,lastname,user_name,email,birthday,country,city,"
 					+ "favorite_football_team,cell_phone_number)" + "values(?,?,?,?,?,?,?,?,?,?)";
 			statement = dbConnection.prepareStatement(query);
 			int id = count;
@@ -88,7 +88,7 @@ public class Insertando {
 
 	public static Connection dbconnect() throws SQLException {
 		Connection dbConnection = DriverManager
-				.getConnection("jdbc:postgresql://localhost:5432/company?allowMultiQueries=true", "postgres", "");
+				.getConnection("jdbc:postgresql://localhost:5433/company?allowMultiQueries=true", "postgres", "qwerty");
 		return dbConnection;
 	}
 
