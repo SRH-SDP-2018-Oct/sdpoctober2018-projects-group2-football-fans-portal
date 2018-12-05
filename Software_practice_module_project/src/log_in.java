@@ -31,12 +31,12 @@ public class log_in {
 			Connection dbConnection = dbconnect();
 			boolean status_log;
 			Statement statement = dbConnection.createStatement();
-			String query = "SELECT user_name, password " + "FROM creator";
+			String query = "SELECT user_id, password " + "FROM user_login";
 			ResultSet resultSet = statement.executeQuery(query);
 			ArrayList<ArrayList> array = new ArrayList<ArrayList>();
 			ArrayList<String> strings = new ArrayList<String>();
 			while (resultSet.next()) {
-				String user_name = resultSet.getString("user_name");
+				String user_name = resultSet.getString("user_id");
 				String password = resultSet.getString("password");
 				strings.add(user_name);
 				strings.add(password);
