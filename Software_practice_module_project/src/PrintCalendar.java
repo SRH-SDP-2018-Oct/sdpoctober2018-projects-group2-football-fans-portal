@@ -2,8 +2,6 @@ import java.util.Scanner;
 
    public class PrintCalendar {
 
-     /** Main method */
-
      public static void main(String[] args) {
      Scanner scan = new Scanner (System.in);
 
