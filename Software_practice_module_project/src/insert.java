@@ -9,33 +9,27 @@ public class insert {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		String cosa1Input;
-		String cosa2Input;
-		System.out.println("Please type cosa1");
-		cosa1Input = scanner.nextLine();
-		System.out.println("Please type cosa2");
-		cosa2Input = scanner.nextLine();
+		int score;
+		System.out.println("Please type score");
+		score = Integer.parseInt(scanner.nextLine());
 		try {
 			Connection dbConnection = dbconnect();
 			
-			String query = "SELECT id, cosa1, cosa2 \r\n"
-					+ "FROM company";
+			String query = queries.getInsertSelectQuery();
 			PreparedStatement statement = dbConnection.prepareStatement(query);
 			ResultSet resultSet = statement.executeQuery();
 			int count = 1;
 			while (resultSet.next()) {
-				int c1 = resultSet.getInt("id");
-				String c2 = resultSet.getString("cosa1");
-				String c3 = resultSet.getString("cosa2");
-				System.out.println(c1+","+c2+","+c3);
+				int c1 = resultSet.getInt("match_details_id");
+				int c2 = resultSet.getInt("score");
+				System.out.println(c1+","+c2);
 				count++;
 			}
-			query = "insert into company(id, cosa1, cosa2)	values(?,?,?)";
+			query = queries.getInsertQuery();
 			statement = dbConnection.prepareStatement(query);
 			int id = count;
 			statement.setInt(1,id);
-			statement.setString(2,cosa1Input);
-			statement.setString(3,cosa2Input);
+			statement.setInt(2,score);
 			statement.executeUpdate();
 			
 			statement.close();
@@ -46,7 +40,7 @@ public class insert {
 	}
 }
 	public static Connection dbconnect() throws SQLException {
-		Connection dbConnection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?allowMultiQueries=true", "postgres",
+		Connection dbConnection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgre?allowMultiQueries=true", "postgres",
 				"1234");
 		return dbConnection;
 	}

@@ -21,12 +21,12 @@ public class log_in {
 	}
 
 	public static Connection dbconnect() throws SQLException {
-		Connection dbConnection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres",
+		Connection dbConnection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgre", "postgres",
 				"1234");
 		return dbConnection;
 	}
 
-	public static boolean logInCheck(String passwordInput, String usernameInput) {
+	public static boolean logInCheck(String usernameInput, String passwordInput) {
 		try {
 			Connection dbConnection = dbconnect();
 			boolean status_log;
