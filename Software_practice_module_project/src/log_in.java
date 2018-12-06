@@ -31,18 +31,17 @@ public class log_in {
 			Connection dbConnection = dbconnect();
 			boolean status_log;
 			Statement statement = dbConnection.createStatement();
-			String query = "SELECT user_id, password " + "FROM user_login";
+			String query= queries.getLogInQuery();
 			ResultSet resultSet = statement.executeQuery(query);
 			ArrayList<ArrayList> array = new ArrayList<ArrayList>();
 			ArrayList<String> strings = new ArrayList<String>();
 			while (resultSet.next()) {
-				String user_name = resultSet.getString("user_id");
+				String user_name = resultSet.getString("user_name");
 				String password = resultSet.getString("password");
 				strings.add(user_name);
 				strings.add(password);
 				array.add(strings);
 				if (passwordInput.equals(password) && (usernameInput.equals(user_name))) {
-					System.out.println(user_name + "," + password);
 					System.out.println("NICE");
 					status_log = true;
 					return status_log;
