@@ -1,3 +1,7 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.sql.*;
@@ -17,9 +21,7 @@ public class log_in {
 		scanner.close();
 	}
 
-	
-
-	public static boolean logInCheck(String passwordInput, String usernameInput) {
+	public static boolean logInCheck(String usernameInput, String passwordInput) {
 		try {
 			Connection dbConnection = dbconnect.dbconnect();
 			boolean status_log;
@@ -29,13 +31,12 @@ public class log_in {
 			ArrayList<ArrayList> array = new ArrayList<ArrayList>();
 			ArrayList<String> strings = new ArrayList<String>();
 			while (resultSet.next()) {
-				String user_name = resultSet.getString("user_id");
+				String user_name = resultSet.getString("user_name");
 				String password = resultSet.getString("password");
 				strings.add(user_name);
 				strings.add(password);
 				array.add(strings);
 				if (passwordInput.equals(password) && (usernameInput.equals(user_name))) {
-					System.out.println(user_name + "," + password);
 					System.out.println("NICE");
 					status_log = true;
 					return status_log;
@@ -49,7 +50,6 @@ public class log_in {
 		}
 		return false;
 	}
-	
 }
 
 
