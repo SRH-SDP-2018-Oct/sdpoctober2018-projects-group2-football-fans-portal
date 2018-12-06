@@ -10,9 +10,9 @@ public class HomePage {
         System.out.println("Welcome to Football Fans Portal");
         System.out.println("Selection of the options");
         System.out.println("1\t Login");
-        System.out.println("2\t Calendar");
+        System.out.println("2\t User Registration");
         System.out.println("3\t Tournament");
-        System.out.println("4\t Offers");
+        System.out.println("4\t Calendar");
         System.out.println("5\t News ");
         System.out.println("6\t Teams ");
 
@@ -25,7 +25,7 @@ public class HomePage {
         switch (choice) {
             case 1: log_in.method1();
 	                break;
-            case 2: System.out.println("Calendar");
+            case 2: Insertando.method1();
                     break;
             case 3: System.out.println("Tournament"); 
                     break;

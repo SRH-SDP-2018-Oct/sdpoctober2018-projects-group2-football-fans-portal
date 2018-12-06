@@ -7,7 +7,7 @@ import java.sql.*;
 
 public class Insertando {
 
-	public static void main(String[] args) {
+	public static void method1() {
 		
 		Scanner scanner = new Scanner(System.in);
 		String user_detail_1Input;
@@ -21,36 +21,39 @@ public class Insertando {
 		String user_detail_9Input;
 		String user_detail_10Input;
 		
-		System.out.println("Please type your name");
+		System.out.println("Welcome to User Registration !");
+		
+		System.out.println("Please type your user name");
 		user_detail_1Input = scanner.nextLine();
-		System.out.println("Please type your lastname");
+		System.out.println("Please type your fullname");
 		user_detail_2Input = scanner.nextLine();
-		System.out.println("Please type your user_name");
+		System.out.println("Please type your password");
 		user_detail_3Input = scanner.nextLine();
-		System.out.println("Please type your email");
+		System.out.println("Please type your gender");
 		user_detail_4Input = scanner.nextLine();
 		System.out.println("Please type your birthday");
 		user_detail_5Input = scanner.nextLine();
-		System.out.println("Please type your country");
+		System.out.println("Please type your email");
 		user_detail_6Input = scanner.nextLine();
-		System.out.println("Please type your city");
+		System.out.println("Please type your mobile number");
 		user_detail_7Input = scanner.nextLine();
-		System.out.println("Please type your favorite football team");
+		System.out.println("Please type your country");
 		user_detail_8Input = scanner.nextLine();
-		System.out.println("Please type your cellphone number");
+		System.out.println("Please type your favorite football team");
 		user_detail_9Input = scanner.nextLine();
-		System.out.println("Please type your pasword");
+		System.out.println("Please type your favorite player");
 		user_detail_10Input = scanner.nextLine();
 		try {
-			Connection dbConnection = dbconnect();
+			Connection dbConnection = dbconnect.dbconnect();
 
-			String query = "SELECT id,name,lastname,user_name,email,birthday,country,city,favorite_football_team,cell_phone_number,pasword\r\n"
-					+ "FROM user_register";
+			String query = "SELECT user_id,user_name,user_Fullname,password,gender,date_of_birth,email,"
+					+ "mobile_number,location,fav_team,fav_player\r\n"
+					+ "FROM user_details";
 			PreparedStatement statement = dbConnection.prepareStatement(query);
 			ResultSet resultSet = statement.executeQuery();
 			int count = 1;
 			while (resultSet.next()) {
-				int user_detail_0 = resultSet.getInt("id");
+				int user_detail_0 = resultSet.getInt("user_id");
 				String user_detail_1 = resultSet.getString("name");
 				String user_detail_2 = resultSet.getString("lastname");
 				String user_detail_3 = resultSet.getString("user_name");
@@ -61,15 +64,13 @@ public class Insertando {
 				String user_detail_8 = resultSet.getString("favorite_football_team");
 				String user_detail_9 = resultSet.getString("cell_phone_number");
 				String user_detail_10 = resultSet.getString("pasword");
-				System.out.println("Enhorabuena");
-				/*System.out.println(user_detail_0 + "," + user_detail_1+ "," + user_detail_2 + "," + user_detail_3 + "," + user_detail_4 + ","
-						+ user_detail_5 + "," + user_detail_6 + "," + user_detail_7 + "," + user_detail_8 + ","
-						+ user_detail_9 + ","
-						+ user_detail_10);*/
+				System.out.println("Fine");
+			
 				count++;
 			}
-			query = "insert into user_register (id,name,lastname,user_name,email,birthday,country,city,"
-					+ "favorite_football_team,cell_phone_number,pasword)" + "values(?,?,?,?,?,?,?,?,?,?,?)";
+			query = "insert into user_details (user_id,user_name,user_Fullname,password,"
+					+ "gender,date_of_birth,email,mobile_number,location,fav_team,fav_player)" +
+					"values(?,?,?,?,?,?,?,?,?,?,?)";
 			statement = dbConnection.prepareStatement(query);
 			int id = count;
 			statement.setInt(1, id);
@@ -83,10 +84,7 @@ public class Insertando {
 			statement.setString(9, user_detail_8Input);
 			statement.setString(10, user_detail_9Input);
 			statement.setString(11, user_detail_10Input);
-			/*System.out.println(id + "," + user_detail_1Input+ "," + user_detail_2Input + "," + user_detail_3Input + "," + user_detail_4Input + ","
-					+ user_detail_5Input + "," + user_detail_6Input + "," + user_detail_7Input + "," + user_detail_8Input + ","
-					+ user_detail_9Input + ","
-					+ user_detail_10Input);*/
+			
 			statement.executeUpdate();
 
 			statement.close();
@@ -97,10 +95,5 @@ public class Insertando {
 		}
 	}
 
-	public static Connection dbconnect() throws SQLException {
-		Connection dbConnection = DriverManager
-				.getConnection("jdbc:postgresql://localhost:5433/company?allowMultiQueries=true", "postgres", "qwerty");
-		return dbConnection;
-	}
 
 }
