@@ -1,14 +1,11 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Scanner;
 public class HomePage {
     
-    public static void main(String [] args) throws SQLException{
+    public static void main(String [] args){
     
     	//dbconnect.dbconnect();
     	
-        Scanner in = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         // Display the menu
         System.out.println("Welcome to Football Fans Portal");
         System.out.println("Selection of the options");
@@ -22,7 +19,7 @@ public class HomePage {
         System.out.println("Please enter your choice:");
         
         //Get user's choice
-        int choice=in.nextInt();
+        int choice=scanner.nextInt();
          
         //Display the title of the chosen module
         switch (choice) {
@@ -32,13 +29,13 @@ public class HomePage {
                     break;
             case 3: System.out.println("Tournament"); 
                     break;
-            case 4: System.out.println("Offers"); 
+            case 4: PrintCalendar.method1(); 
                      break;
             case 5: System.out.println("News"); 
                      break;
             default: System.out.println("Invalid choice");
             
-           
+            scanner.close();
         }//end of switch
     }//end of the main method
 }//end of class

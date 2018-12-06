@@ -2,21 +2,20 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Scanner;
 
 public class PrintCalendar {
 
-	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
+	public static void method1() {
+		Scanner scanner = new Scanner(System.in);
 
 		// Prompt the user to enter year
 		System.out.print("Enter full year (e.g., 2001): ");
-		int year = scan.nextInt();
+		int year = scanner.nextInt();
 
 		// Prompt the user to enter month
 		System.out.print("Enter month in number between 1 and 12: ");
-		int month = scan.nextInt();
+		int month = scanner.nextInt();
 
 		// Print calendar for the month of the year
 		if (month < 1 || month > 12 || year < 1980)
@@ -38,6 +37,7 @@ public class PrintCalendar {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		scanner.close();
 	}
 
 	static void printMonth(int year, int month) {
