@@ -33,9 +33,10 @@ public class PrintCalendar {
 			while (resultSet.next()) {
 				String element1 = resultSet.getString("match_place");
 				String element2 = resultSet.getString("team_name");
-				String element3 = resultSet.getString("match_day");
-				System.out.println("place,	     team_name,	      day");
-				System.out.println(element1+"	"+element2+"	"+element3);
+				String element3 = resultSet.getString("score");
+				String element4 = resultSet.getString("match_day");
+				System.out.println("place,	     team_name,	      day		score");
+				System.out.println(element1+"	"+element2+"	"+element3+"	"+ element4);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
