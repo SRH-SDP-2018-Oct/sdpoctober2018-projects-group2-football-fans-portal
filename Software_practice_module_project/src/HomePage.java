@@ -10,11 +10,10 @@ public class HomePage {
         System.out.println("Welcome to Football Fans Portal");
         System.out.println("Selection of the options");
         System.out.println("1\t Login");
-        System.out.println("2\t Calendar");
+        System.out.println("2\t nothing");
         System.out.println("3\t Tournament");
-        System.out.println("4\t Offers");
-        System.out.println("5\t News ");
-        System.out.println("6\t Teams ");
+        System.out.println("4\t Calendar");
+        System.out.println("5\t Teams ");
 
         System.out.println("Please enter your choice:");
         
