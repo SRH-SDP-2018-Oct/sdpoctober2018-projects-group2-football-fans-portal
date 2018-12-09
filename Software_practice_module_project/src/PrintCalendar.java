@@ -7,17 +7,11 @@ import java.util.Scanner;
 public class PrintCalendar {
 
 	public static void method1() {
-		Scanner scanner = new Scanner(System.in);
-
-		// Prompt the user to enter year
+		Scanner scanner = dbconnect.getScanner();
 		System.out.print("Enter full year (e.g., 2001): ");
 		int year = scanner.nextInt();
-
-		// Prompt the user to enter month
 		System.out.print("Enter month in number between 1 and 12: ");
 		int month = scanner.nextInt();
-
-		// Print calendar for the month of the year
 		if (month < 1 || month > 12 || year < 1980)
 			System.out.println("Wrong input!");
 		else
@@ -36,12 +30,11 @@ public class PrintCalendar {
 				String element3 = resultSet.getString("score");
 				String element4 = resultSet.getString("match_day");
 				System.out.println("place,	     team_name,			score      day");
-				System.out.println(element1+"	"+element2+"	"+element3+"	"+ element4);
+				System.out.println(element1 + "	" + element2 + "	" + element3 + "	" + element4);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		scanner.close();
 	}
 
 	static void printMonth(int year, int month) {

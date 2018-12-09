@@ -6,48 +6,42 @@ import java.util.Scanner;
 
 public class InsertComments {
 
-	public static void method() {
+	public static void method1(int sub_topic_id) {
 
-		Scanner scanner = new Scanner(System.in);
-		
-		String comentario;
-	
-		System.out.println("\nTo add comment add the id again: ");
-		int id_subtopics = Integer.parseInt(scanner.nextLine());
-		
-		System.out.println("\nMy comment is: ");
-		comentario = scanner.nextLine();
-		
-		try {
-			Connection dbConnection = dbconnect.dbconnect();
-
-			String query = "SELECT id_comentario,comentario,id_subtopics\n"
-					+ "FROM comentarios_subtopics";
-			
-			PreparedStatement statement = dbConnection.prepareStatement(query);
-			ResultSet resultSet = statement.executeQuery();
-			int count = 1;
-			while (resultSet.next()) {
-				//System.out.println(id_comentario+ "," + comentario1 + "," + id_subtopics);
-				
-				count++;
-				
+		Scanner scanner = dbconnect.getScanner();
+		System.out.println("To add comment write 1 and to return to Team list write 2");
+		int choice = scanner.nextInt();
+		if (choice == 1) {
+			try {
+				Connection dbConnection = dbconnect.dbconnect();
+				String query = queries.getSelectCommentQuery();
+				PreparedStatement statement = dbConnection.prepareStatement(query);
+				ResultSet resultSet = statement.executeQuery();
+				int count = 1;
+				while (resultSet.next()) {
+					count++;
+				}
+				System.out.println("Please write your comment");
+				Scanner scannerC = new Scanner(System.in);
+				String comment = scannerC.nextLine();
+				query = queries.getInsertCommentQuery();
+				statement = dbConnection.prepareStatement(query);
+				int comment_id = count;
+				statement.setInt(1, comment_id);
+				statement.setInt(2, sub_topic_id);
+				statement.setString(3, comment);
+				statement.executeUpdate();
+				statement.close();
+				dbConnection.close();
+				scannerC.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
-			
-			query = "insert into comentarios_subtopics (id_comentario,comentario,id_subtopics)" + "values(?,?,?)";
-			statement = dbConnection.prepareStatement(query);
-			int id_comentario=count;
-			statement.setInt(1, id_comentario);
-			statement.setString(2, comentario);
-			statement.setInt(3, id_subtopics);
-
-			statement.executeUpdate();
-
-			statement.close();
-			dbConnection.close();
-			scanner.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} else if (choice == 2) {
+			team_page.method1();
+		} else {
+			System.out.println("Wrong choice");
 		}
+
 	}
 }

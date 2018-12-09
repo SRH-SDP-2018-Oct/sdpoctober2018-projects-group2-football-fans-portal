@@ -9,7 +9,7 @@ public class Insertando {
 
 	public static void method1() {
 
-		Scanner scanner = new Scanner(System.in);
+		Scanner scanner = dbconnect.getScanner();
 		String user_detail_1Input;
 		String user_detail_2Input;
 		String user_detail_3Input;
@@ -79,7 +79,6 @@ public class Insertando {
 			e.printStackTrace();
 		}
 		HomePage.method1();
-		scanner.close();
 	}
 
 }

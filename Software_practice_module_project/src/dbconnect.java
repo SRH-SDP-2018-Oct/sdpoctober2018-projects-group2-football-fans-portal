@@ -1,6 +1,17 @@
 import java.sql.*;
+import java.util.Scanner;
 
 public class dbconnect {
+
+	public static Scanner scanner = new Scanner(System.in);
+	
+	public static Scanner getScanner() {
+		return scanner;
+	}
+
+	public static void setScanner(Scanner scanner) {
+		dbconnect.scanner = scanner;
+	}
 
 	public static Connection dbconnect() throws SQLException {
 

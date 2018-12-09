@@ -9,10 +9,8 @@ public class SubTopics {
 
 	public static void main(String[] args) {
 		
-		Scanner scanner = new Scanner(System.in);
-		String user_subtopic;
-		
-		
+		Scanner scanner = dbconnect.getScanner();
+		String user_subtopic;		
 		System.out.println("Please type your new sub topic: ");
 		user_subtopic = scanner.nextLine();
 		
@@ -41,7 +39,6 @@ public class SubTopics {
 
 			statement.close();
 			dbConnection.close();
-			scanner.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

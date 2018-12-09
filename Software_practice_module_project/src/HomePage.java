@@ -8,7 +8,7 @@ public class HomePage {
 
 	public static void method1() {
 
-		Scanner scanner = new Scanner(System.in);
+		Scanner scanner = dbconnect.getScanner();
 		System.out.println("Welcome to Football Fans Portal");
 		System.out.println("Selection of the options");
 		System.out.println("1\t Login");
@@ -36,8 +36,6 @@ public class HomePage {
 			break;
 		default:
 			System.out.println("Invalid choice");
-
-			scanner.close();
 		}
 	}
 }

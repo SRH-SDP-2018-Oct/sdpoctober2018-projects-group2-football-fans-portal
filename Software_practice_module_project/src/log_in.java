@@ -10,7 +10,7 @@ public class log_in {
 	
 	public static void method1() {
 	
-		Scanner scanner = new Scanner(System.in);
+		Scanner scanner = dbconnect.getScanner();
 		String usernameInput;
 		String passwordInput;
 		System.out.println("Please type username");
@@ -19,7 +19,6 @@ public class log_in {
 		passwordInput = scanner.nextLine();
 		logInCheck(usernameInput, passwordInput);
 		HomePage.method1();
-		scanner.close();
 }
 
 	public static boolean logInCheck(String usernameInput, String passwordInput) {

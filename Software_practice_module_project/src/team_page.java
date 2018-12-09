@@ -9,6 +9,7 @@ public class team_page {
 	public static void method1() {
 
 		try {
+			Scanner scanner = dbconnect.getScanner();
 			Connection dbConnection = dbconnect.dbconnect();
 			String query = queries.getSelectTeamQuery();
 			System.out.println("Enter your selected team ");
@@ -18,7 +19,6 @@ public class team_page {
 				String element1 = resultSet.getString("team_name");
 				System.out.println(element1);
 			}
-			Scanner scanner = new Scanner(System.in);
 			int team = scanner.nextInt();
 			System.out.println("What do you want to do:\r\n"
 					+ "1: List of matches \r\n"
@@ -27,11 +27,10 @@ public class team_page {
 			switch(option) {
 			case 1: listMatch.method1(team);
             break;
-			case 2: topics.method1(team);
+			case 2: SubtopicsDetails.method1(team);
             break;
             default: System.out.println("Invalid choice");
 			}
-			scanner.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
