@@ -7,6 +7,11 @@ import java.util.Scanner;
 public class PrintCalendar {
 
 	public static void method1() {
+		System.out.println("Matches");
+		System.out.println("                     ___\r\n" + 
+				" o__        o__     |   |\\\r\n" + 
+				"/|          /\\      |   |X\\\r\n" + 
+				"/ > o        <\\     |   |XX\\");
 		Scanner scanner = dbconnect.getScanner();
 		System.out.print("Enter full year (e.g., 2001): ");
 		int year = scanner.nextInt();
@@ -45,7 +50,7 @@ public class PrintCalendar {
 	static void printMonthTitle(int year, int month) {
 
 		System.out.println("         " + getMonthName(month) + " " + year);
-		System.out.println("末末末末末末末末末末末末末末�");
+		System.out.println("----------------------------");
 		System.out.println(" Sun Mon Tue Wed Thu Fri Sat");
 
 	}
