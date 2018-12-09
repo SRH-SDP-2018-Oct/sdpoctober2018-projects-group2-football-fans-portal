@@ -24,6 +24,10 @@ public class queries {
 			"	join team as t\r\n" + 
 			"	on t.team_id = md.team_id\r\n" +
 			"	where md.team_id = ?";
+	public static String DashboardQuery="SELECT * FROM team";
+	public static String getDashboardQuery() {
+		return DashboardQuery;
+		}
 	public static String getInsertCommentQuery() {
 	return insertCommentQuery;
 	}
