@@ -16,6 +16,7 @@ public class HomePage {
 		System.out.println("3\t Shop");
 		System.out.println("4\t Calendar");
 		System.out.println("5\t Teams ");
+		System.out.println("6\t Dashboard ");
 		System.out.println("Please enter your choice:");
 		int choice = scanner.nextInt();
 		switch (choice) {
